@@ -1,0 +1,44 @@
+<p>Edit this pet </p>
+
+<div *ngIf="EditErrors">
+  <p *ngIf="EditErrors.errors.Name" style="color:red">
+    {{EditErrors.errors.Name.message}}
+  </p>
+  <p *ngIf="EditErrors.errors.type" style="color:red">
+    {{EditErrors.errors.type.message}}
+  </p>
+  <p *ngIf="EditErrors.errors.description" style="color:red">
+    {{EditErrors.errors.description.message}}
+  </p>
+</div>
+
+<form>
+<label> Pet Name:  
+  <input type="text" name="onePet.Name" [(ngModel)]="onePet.Name" />
+</label>
+<br>
+<label> Pet Type:  
+  <input type="text" name="onePet.type" [(ngModel)]="onePet.type" />
+</label>
+<br>
+<label> Description:  
+  <input type="text" name="onePet.description" [(ngModel)]="onePet.description" />
+</label>
+
+<p>Skills: </p>
+<ul>
+  <li>
+    <label>Skill 1: <input type="text" name="onePet.skills[0]" [(ngModel)]="onePet.skills[0]" /></label>
+  </li>
+  <li>
+    <label>Skill 2: <input type="text" name="onePet.skills[1]" [(ngModel)]="onePet.skills[1]" /></label>
+  </li>
+  <li>
+    <label>Skill 3: <input type="text" name="onePet.skills[2]" [(ngModel)]="onePet.skills[2]" /></label>
+  </li>
+</ul>
+
+<br>
+<input type="submit" value="Submit" (click)="onSubmitEdit()"/>
+<button [routerLink]="['/']">Cancel</button>
+</form>
