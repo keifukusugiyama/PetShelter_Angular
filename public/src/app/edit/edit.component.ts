@@ -12,10 +12,10 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 export class EditComponent implements OnInit {
   
   onePet = {
-    Name: "",
-    type: "",
-    description:"",
-    skills:[]
+    // Name: "",
+    // type: "",
+    // description:"",
+    // skills:[]
   };
 
   EditErrors : any;
@@ -51,6 +51,7 @@ export class EditComponent implements OnInit {
     let observable = this._httpService.updatePetByID(this.onePet['_id'], this.onePet);
     observable.subscribe(data => {
       if (data['errors']) {
+        console.log('errors', data);
         this.EditErrors = data;
       }
       else{

@@ -7,7 +7,7 @@ module.exports = {
     //get /api/pets 
     all: (req, res) => {
         //retrieve all the Pets
-        Pet.find({})
+        Pet.find({}).sort('type')
             //if successful, respond with json file of result
             .then(results => res.json(results))
             //if there's error, respond with json file of error
@@ -24,6 +24,13 @@ module.exports = {
         .catch(err => res.json(err))
     },
 
+    // findName:(req,res)=>{
+    //     Pet.findOne({Name:req.body.Name})
+    //     .then(results => res.json(results))
+    //     //if there's error, respond with json file of error
+    //     .catch(err => res.json(err))
+    // },
+
     //post /api/pets 
     new:(req, res)=>{
         //create new Pet with returned json file on body
@@ -37,7 +44,7 @@ module.exports = {
     //put /api/pets/:id 
     update:(req, res)=>{
         //find Pet by id given on the route, update with json file on body
-        Pet.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+        Pet.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true, context: 'query'})
         //if successful, respond with json file with the updating Pet
         .then(results => res.json(results))
         //if there's error, respond with json file of error

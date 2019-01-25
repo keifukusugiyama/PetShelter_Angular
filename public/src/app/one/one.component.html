@@ -16,5 +16,5 @@
 
 <p><strong>Likes: </strong> {{onePet.likes}}</p>
 
-<button (click)="onLike(onePet._id)">Like this pet</button>
+<button *ngIf="!liked" (click)="onLike(onePet._id)">Like this pet</button>
 <button (click)="onButtonDelete(onePet._id)" >Adopt this pet</button>
